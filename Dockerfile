@@ -1,6 +1,6 @@
 FROM alpine:20240315
 MAINTAINER Seyed Danial Movahed
-LABEL production
+LABEL env=production
 EXPOSE 80
 RUN apk add --update nodejs npm
 WORKDIR /
