@@ -5,9 +5,8 @@ EXPOSE 80
 RUN apk add --update nodejs npm
 COPY ./ ./app
 WORKDIR /app
-RUN ls app
 RUN npm i
-RUN mkdir -p /app/build
+RUN mkdir -p build
 RUN node ace build
 WORKDIR /app/build
 RUN npm ci --omit="dev"
