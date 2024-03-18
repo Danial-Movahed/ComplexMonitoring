@@ -3,8 +3,9 @@ MAINTAINER Seyed Danial Movahed
 LABEL env=production
 EXPOSE 80
 RUN apk add --update nodejs npm
+COPY ./ ./
 WORKDIR /
-RUN ls
+RUN ls home/
 RUN pwd
 RUN npm i
 RUN mkdir -p /build
