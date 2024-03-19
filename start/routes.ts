@@ -9,4 +9,6 @@
 
 import router from '@adonisjs/core/services/router'
 
-router.get('/', '#controllers/users_controller.index')
+router.get('/', '#controllers/main_controller.index')
+router.get('/login', '#controllers/login_controller.index')
+router.get('/dashboard', '#controllers/dashboard_controller.index')

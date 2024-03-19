@@ -1,7 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 
-export default class UsersController {
+export default class LoginController {
     async index(ctx: HttpContext) {
-        return ctx.view.render('pages/login')
+        return ctx.view.render('login')
     }
 }
