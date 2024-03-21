@@ -10,6 +10,6 @@ export default class SignupController {
     user.password = password
     user.fullName = fullname
     await user.save()
-    return ctx.view.render("login")
+    return ctx.response.redirect('/login')
   }
 }
