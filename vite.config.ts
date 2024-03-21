@@ -8,7 +8,7 @@ export default defineConfig({
              * Entrypoints of your application. Each entrypoint will
              * result in a separate bundle.
              */
-            entrypoints: [],
+            entrypoints: ['app/controllers/dashboard_controller.ts'],
             // entrypoints: ['resources/css/login.css', 'resources/js/login.js'],
 
             /**
