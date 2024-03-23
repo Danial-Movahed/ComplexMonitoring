@@ -26693,13 +26693,17 @@ pre[class*="language-"] {
     overflow: auto !important;
   }
 }
+/*# sourceMappingURL=dashboard-free.css.map */
 
 .TopNumbers {
   display: flex;
   gap: 10px;
 }
-/*# sourceMappingURL=dashboard-free.css.map */
 
 .size-13 {
   font-size: 13px;
+}
+
+.col17 {
+  width: 17%;
 }
