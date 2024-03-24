@@ -26707,3 +26707,11 @@ pre[class*="language-"] {
 .col17 {
   width: 17%;
 }
+
+.text-ssm {
+  font-size: 0.8rem !important
+}
+
+.text-llg {
+  font-size: 1rem !important;
+}
