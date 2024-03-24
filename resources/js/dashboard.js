@@ -229,18 +229,21 @@ socket.emit('Name', { Name: 'Frontend' })
 
 socket.on('Monitor', (data) => {
   var label = new Date().toLocaleTimeString()
-  // if (ChartCPULabels[ChartCPULabels.length - 1] != label) {
-    ChartCPULabels.push(label)
-    ChartCPULabels.shift()
-  // }
+  ChartCPULabels.push(label)
+  ChartCPULabels.shift()
   ChartCPUData[data['name']].shift()
   ChartCPUData[data['name']].push(data['cpu'])
   ChartCPU.update()
   var LoadAvgElement = document.getElementById(data['name'] + '_LoadAvg')
   var RAMElement = document.getElementById(data['name'] + '_RAM')
   var UsersCountElement = document.getElementById(data['name'] + '_UsersCount')
+  var TempElement = document.getElementById(data['name'] + '_Temp')
+  var TempBarElement = document.getElementById(data['name'] + '_Tempbar')
   LoadAvgElement.innerText = data['loadAvg']
   RAMElement.innerText = data['ram']+"%"
   UsersCountElement.innerText = data['usersCount']
+  TempElement.innerText = data['packageTemp']
+  TempBarElement.ariaValueNow = data['packageTemp']
+  TempBarElement.style.width = data['packageTemp']+"%"
 })
 
