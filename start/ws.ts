@@ -21,4 +21,7 @@ io.on('connection', (socket) => {
       io.to(element).emit(event, data)
     });
   })
+  socket.on('disconnect', function() {
+    (Clients["Frontend"] as Set<string>).delete(socket.id)
+  })
 })
