@@ -2,7 +2,7 @@ import { io } from 'socket.io-client'
 
 const socket = io()
 
-var MAX_DATA_SET_LENGTH = 20
+var MAX_DATA_SET_LENGTH = window.MAX_DATA_SET_LENGTH
 
 var ChartCPULabels = Array(MAX_DATA_SET_LENGTH).fill(0)
 var ChartCPUData = {
