@@ -26704,14 +26704,22 @@ pre[class*="language-"] {
   font-size: 13px;
 }
 
-.col17 {
-  width: 17%;
-}
-
 .text-ssm {
   font-size: 0.8rem !important
 }
 
 .text-llg {
   font-size: 1rem !important;
+}
+
+@media screen and (max-width: 1800px) {
+  .temp-cols {
+    min-width: 33.33%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .temp-cols {
+    min-width: 50%;
+  }
 }
