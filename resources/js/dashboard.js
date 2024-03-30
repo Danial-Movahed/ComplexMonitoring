@@ -13,21 +13,29 @@ var ChartCPUData = {
   "Roudabeh": Array(MAX_DATA_SET_LENGTH).fill(0),
 }
 
+var ChartDiskUsageData = {
+  "Giv": 0,
+  "Piran": 0,
+  "Esfandiar": 0,
+  "Rostam": 0,
+  "Roudabeh": 0,
+}
+
 var ctx = document.getElementById('chart-bars').getContext('2d')
 
 var ChartDiskUsage = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    labels: ['Giv', 'Piran', 'Esfandiar', 'Rostam', 'Roudabeh'],
     datasets: [
       {
-        label: 'Sales',
+        label: 'Disk Usage',
         tension: 0.4,
         borderWidth: 0,
         borderRadius: 4,
         borderSkipped: false,
-        backgroundColor: '#fff',
-        data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+        backgroundColor: '#80ffbd',
+        data: ChartDiskUsageData,
         maxBarThickness: 6,
       },
     ],
@@ -46,6 +54,8 @@ var ChartDiskUsage = new Chart(ctx, {
     },
     scales: {
       y: {
+        min: 0,
+        max: 100,
         grid: {
           drawBorder: false,
           display: false,
@@ -54,14 +64,14 @@ var ChartDiskUsage = new Chart(ctx, {
         },
         ticks: {
           suggestedMin: 0,
-          suggestedMax: 500,
+          suggestedMax: 100,
           beginAtZero: true,
           padding: 15,
           font: {
             size: 14,
             family: 'Open Sans',
             style: 'normal',
-            lineHeight: 2,
+            //lineHeight: 8,
           },
           color: '#fff',
         },
@@ -74,7 +84,13 @@ var ChartDiskUsage = new Chart(ctx, {
           drawTicks: false,
         },
         ticks: {
-          display: false,
+          display: true,
+          font: {
+            family: 'Open Sans',
+            style: 'normal',
+            //lineHeight: 8,
+          },
+          color: '#ffccf6',
         },
       },
     },
@@ -105,7 +121,7 @@ var ChartCPU = new Chart(ctx2, {
         tension: 0.4,
         borderWidth: 0,
         pointRadius: 0,
-        borderColor: '#cb0c9f',
+        borderColor: '#7928ca',
         borderWidth: 3,
         backgroundColor: gradientStroke1,
         fill: true,
@@ -117,7 +133,7 @@ var ChartCPU = new Chart(ctx2, {
         tension: 0.4,
         borderWidth: 0,
         pointRadius: 0,
-        borderColor: '#3A416F',
+        borderColor: '#2152ff',
         borderWidth: 3,
         backgroundColor: gradientStroke2,
         fill: true,
@@ -129,7 +145,7 @@ var ChartCPU = new Chart(ctx2, {
         tension: 0.4,
         borderWidth: 0,
         pointRadius: 0,
-        borderColor: '#3A416F',
+        borderColor: '#ea0606',
         borderWidth: 3,
         backgroundColor: gradientStroke2,
         fill: true,
@@ -141,7 +157,7 @@ var ChartCPU = new Chart(ctx2, {
         tension: 0.4,
         borderWidth: 0,
         pointRadius: 0,
-        borderColor: '#3A416F',
+        borderColor: '#fbcf33',
         borderWidth: 3,
         backgroundColor: gradientStroke2,
         fill: true,
@@ -153,7 +169,7 @@ var ChartCPU = new Chart(ctx2, {
         tension: 0.4,
         borderWidth: 0,
         pointRadius: 0,
-        borderColor: '#3A416F',
+        borderColor: '#17ad37',
         borderWidth: 3,
         backgroundColor: gradientStroke2,
         fill: true,
@@ -245,5 +261,10 @@ socket.on('Monitor', (data) => {
   TempElement.innerText = data['packageTemp']
   TempBarElement.ariaValueNow = data['packageTemp']
   TempBarElement.style.width = data['packageTemp']+"%"
+  ChartDiskUsageData[data['name']] = data['disk']
+  ChartDiskUsage.update()
+  console.log(
+    data['name'],ChartDiskUsageData[data['name']]
+  )
 })
 
