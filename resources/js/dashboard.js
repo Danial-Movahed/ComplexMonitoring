@@ -263,5 +263,9 @@ socket.on('Monitor', (data) => {
   TempBarElement.style.width = data['packageTemp']+"%"
   ChartDiskUsageData[data['name']] = data['disk']
   ChartDiskUsage.update()
+  if (data['name'] == "Piran") {
+    var NetLoggedIn = document.getElementById("NetLoggedIn")
+    NetLoggedIn.innerHTML = "<b>"+data['netLoggedIn']+"</b> is currently logged in to internet"
+  }
 })
 
