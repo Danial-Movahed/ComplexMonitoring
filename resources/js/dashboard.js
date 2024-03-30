@@ -263,8 +263,5 @@ socket.on('Monitor', (data) => {
   TempBarElement.style.width = data['packageTemp']+"%"
   ChartDiskUsageData[data['name']] = data['disk']
   ChartDiskUsage.update()
-  console.log(
-    data['name'],ChartDiskUsageData[data['name']]
-  )
 })
 
