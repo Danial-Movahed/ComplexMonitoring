@@ -8,6 +8,7 @@
 */
 
 import router from '@adonisjs/core/services/router'
+import { middleware } from '#start/kernel'
 import env from './env.js'
 
 // router.get('/', '#controllers/main_controller.index')
@@ -34,6 +35,11 @@ router.get('/sign-in', '#controllers/signin_controller.index')
 router.get('/sign-up', '#controllers/signup_controller.index')
 router.post('/sign-in', '#controllers/login_controller.post')
 router.post('/sign-up', '#controllers/signup_controller.post')
+router.get('/sign-out', async ({ auth, response }) => {
+    await auth.use('web').logout()
+    return response.redirect('/')
+  }).use(middleware.auth())
+
 
 router.get('/google/redirect', ({ ally }) => {
   return ally.use('google').redirect()

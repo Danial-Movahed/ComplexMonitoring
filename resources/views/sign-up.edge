@@ -33,7 +33,7 @@
   <!-- CSS Files -->
   <link id="pagestyle" href="/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="/js/signup.js"></script>
+  @vite(['resources/js/signup.js'])
 </head>
 
 <body class="">
@@ -154,18 +154,19 @@
                 </div>
               </div>
               <div class="card-body pt-0">
-                <form role="form text-left" onSubmit="return SignUp()" action="/sign-up">
+                <form role="form text-left" onSubmit="return SignUp()" method="post" action="/sign-up">
+                  {{ csrfField() }}
                   <label for="Email">
                     Your email
                   </label>
                   <div class="mb-3">
                     <input type="email" class="form-control" name="Email" placeholder="Email" id="EmailInput" aria-label="Email" aria-describedby="email-addon" required>
                   </div>
-                  <label for="Name">
-                    Your name
+                  <label for="FullName">
+                    Your full name
                   </label>
                   <div class="mb-3">
-                    <input type="text" class="form-control" name="Name" placeholder="Name" id="NameInput" aria-label="Name" aria-describedby="email-addon" required>
+                    <input type="text" class="form-control" name="FullName" placeholder="Full name" id="FullNameInput" aria-label="FullName" aria-describedby="email-addon" required>
                   </div>
                   <label for="َUnixUsername">
                     Your unix username if granted access to each computer
@@ -208,7 +209,7 @@
                     @end
                   </table>
                   <div class="mb-3">
-                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon" required>
+                    <input type="password" class="form-control" name="Password" placeholder="Password" aria-label="Password" aria-describedby="password-addon" required>
                   </div>
                   <div class="form-check form-check-info text-left">
                     <input class="form-check-input" type="checkbox" name="Conditions" value="" id="Conditions" autocomplete="off" required>

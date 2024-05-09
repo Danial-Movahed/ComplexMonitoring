@@ -9,13 +9,24 @@ export default class SignupController {
     })
   }
   async post(ctx: HttpContext) {
-    const { username, fullname, password } = ctx.request.only(['username', 'fullname', 'password'])
+    const req = ctx.request.all()
 
+    var unixUsernames: { [name: string]: string } = {}
+    env.get('COMPUTERS')?.split(', ').forEach(computer => {
+      unixUsernames[computer] = req["UnixUsername"+computer]
+    });
+    var computerPermissions: { [name: string]: number } = {}
+    env.get('COMPUTERS')?.split(', ').forEach(computer => {
+      computerPermissions[computer] = 0
+    });
     const user = new User()
-    user.username = username
-    user.password = password
-    user.fullName = fullname
+    user.username = req["Email"]
+    user.password = req["Password"]
+    user.fullName = req["FullName"]
+    user.unixUsernames = JSON.stringify(unixUsernames)
+    user.permission = JSON.stringify(computerPermissions)
     await user.save()
-    return ctx.response.redirect('/login')
+    await ctx.auth.use('web').login(user)
+    return ctx.response.redirect('/')
   }
 }

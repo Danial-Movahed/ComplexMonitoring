@@ -1,5 +1,6 @@
 import { io } from 'socket.io-client'
 
+var Name = "Dashboard"
 const socket = io()
 
 var MAX_DATA_SET_LENGTH = window.MAX_DATA_SET_LENGTH
@@ -241,7 +242,7 @@ window.ChartCPU = ChartCPU
 window.ChartDiskUsage = ChartDiskUsage
 window.ChartCPULabels = ChartCPULabels
 
-socket.emit('Name', { Name: 'Frontend' })
+socket.emit('Name', { Name: Name })
 
 socket.on('Monitor', (data) => {
   if (data['name'] == "Piran") {
