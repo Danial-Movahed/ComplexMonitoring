@@ -4,7 +4,7 @@ import { Server } from 'socket.io'
 const io = new Server(adonisServer.getNodeServer())
 var Clients: { [name: string]: string | Set<string> } = {}
 Clients['Frontend'] = new Set<string>()
-var NetLoggedInUser = ""
+var NetLoggedInUser = "No one"
 
 io.on('connection', (socket) => {
   socket.onAny((event, data) => {
