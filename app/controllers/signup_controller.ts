@@ -4,7 +4,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 
 export default class SignupController {
   async index(ctx: HttpContext) {
-    return ctx.view.render('sign-up',{
+    return ctx.view.render('signup',{
       Computers: env.get('COMPUTERS')?.split(', ')
     })
   }
@@ -26,7 +26,7 @@ export default class SignupController {
     user.unixUsernames = JSON.stringify(unixUsernames)
     user.permission = JSON.stringify(computerPermissions)
     await user.save()
-    await ctx.auth.use('web').login(user)
+    await ctx.auth.use('web').login(user, !!ctx.request.input('remember_me'))
     return ctx.response.redirect('/')
   }
 }

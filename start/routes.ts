@@ -21,21 +21,12 @@ router.get('/tables', ({ view }) => {
   return view.render('tables', {
     Computers: env.get('COMPUTERS')?.split(', '),
   })
-})
-router.get('/billing', ({ view }) => {
-  return view.render('billing')
-})
-router.get('/virtual-reality', ({ view }) => {
-  return view.render('virtual-reality')
-})
-router.get('/rtl', ({ view }) => {
-  return view.render('rtl')
-})
-router.get('/sign-in', '#controllers/signin_controller.index')
-router.get('/sign-up', '#controllers/signup_controller.index')
-router.post('/sign-in', '#controllers/login_controller.post')
-router.post('/sign-up', '#controllers/signup_controller.post')
-router.get('/sign-out', async ({ auth, response }) => {
+}).use(middleware.auth())
+router.get('/login', '#controllers/login_controller.index')
+router.get('/signup', '#controllers/signup_controller.index')
+router.post('/login', '#controllers/login_controller.post')
+router.post('/signup', '#controllers/signup_controller.post')
+router.get('/logout', async ({ auth, response }) => {
     await auth.use('web').logout()
     return response.redirect('/')
   }).use(middleware.auth())

@@ -73,7 +73,7 @@
           <li class="nav-item">
             <a class="nav-link me-2" href="../pages/sign-in.html">
               <i class="fas fa-key opacity-6  me-1"></i>
-              Sign In
+              Log In
             </a>
           </li>
         </ul>
@@ -154,7 +154,7 @@
                 </div>
               </div>
               <div class="card-body pt-0">
-                <form role="form text-left" onSubmit="return SignUp()" method="post" action="/sign-up">
+                <form role="form text-left" onSubmit="return SignUp()" method="post" action="/signup">
                   {{ csrfField() }}
                   <label for="Email">
                     Your email
@@ -220,7 +220,7 @@
                   <div class="text-center">
                     <input type="submit" id="SignUpButton" class="btn bg-gradient-dark w-100 my-4 mb-2" value="Sign up">
                   </div>
-                  <p class="text-sm mt-3 mb-0">Already have an account? <a href="javascript:;" class="text-dark font-weight-bolder">Sign in</a></p>
+                  <p class="text-sm mt-3 mb-0">Already have an account? <a href="/login" class="text-dark font-weight-bolder">Log In</a></p>
                 </form>
               </div>
             </div>

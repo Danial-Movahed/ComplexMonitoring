@@ -176,16 +176,16 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/sign-out">
+            <a class="nav-link" href="/logout">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center fa-solid fa-arrow-right-from-bracket">
               </div>
-              <span class="nav-link-text ms-1">Sign out</span>
+              <span class="nav-link-text ms-1">Log Out</span>
             </a>
           </li>
         @end
         @if(!auth.isAuthenticated)
           <li class="nav-item">
-            <a class="nav-link" href="/sign-in">
+            <a class="nav-link" href="/login">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <title>document</title>
@@ -201,11 +201,11 @@
                   </g>
                 </svg>
               </div>
-              <span class="nav-link-text ms-1">Sign In</span>
+              <span class="nav-link-text ms-1">Log In</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/sign-up">
+            <a class="nav-link" href="/signup">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <title>spaceship</title>
@@ -250,7 +250,7 @@
             <li class="nav-item d-flex align-items-center">
               <a
               @if(!auth.isAuthenticated)
-                href="/sign-in"
+                href="/login"
               @end
               class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
@@ -258,7 +258,7 @@
                   @if(auth.isAuthenticated)
                     {{ auth.user.fullName }}
                   @else
-                    Sign In
+                    Log In
                   @end
               </span>
               </a>
